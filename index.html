@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     color: white;
     text-align: center;
 }
@@ -23,6 +23,7 @@ body {
     border-radius: 20px;
     width: 90%;
     max-width: 400px;
+    margin: 30px auto;
 }
 button {
     padding: 12px 20px;
@@ -44,8 +45,6 @@ img {
     margin-top: 10px;
     font-size: 18px;
 }
-
-/* Password Screen */
 #passwordScreen {
     background: rgba(255,255,255,0.15);
     padding: 30px;
@@ -79,6 +78,15 @@ img {
     font-size: 15px;
     color: #ffe0e0;
 }
+#specialMessageSection {
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+}
 </style>
 </head>
 <body>
@@ -91,7 +99,7 @@ img {
     <p id="errorMsg">❌ Wrong password, try again!</p>
 </div>
 
-<!-- MAIN CONTENT (hidden until correct password) -->
+<!-- MAIN CONTENT -->
 <div class="container hidden" id="mainContent">
     <h2 id="title">Answer these questions first 💌</h2>
     <!-- QUESTION 1 -->
@@ -118,12 +126,24 @@ img {
         <h2>Happy Birthday My Love ❤️</h2>
         <button onclick="playSong()">Play Special Song 🎵</button>
         <button onclick="showPhoto()">See Our Picture 📸</button>
+        <button onclick="showSpecialMessage()">Special Message for Begum 💌</button>
         <div id="photoSection" class="hidden">
             <img src="wish pic.PNG">
             <div class="message">
                 Happy Birthday my love ❤️<br>
                 You are the most beautiful part of my life. I love you like this universe — never ending, always expanding.
             </div>
+        </div>
+        <div id="specialMessageSection" class="hidden">
+            Happy Birthday to the most amazing, wonderful and prettiest girl to ever exist in this universe. 🌸<br><br>
+            I want you to know that I really love you a lot and I cannot live without you. Whenever I think about you, I remember the day when I first saw you — you were looking stunning and really pretty, and I still find you really beautiful. 😍<br><br>
+            Thank you for coming into my life and making it so amazing. The 2 years that I have spent with you are the most amazing years of my life. I look forward to spending my whole life with you. 💕<br><br>
+            I pray for you to be happy and healthy for the rest of your life, and I pray that we stay together through every birthday of ours that will come. 🤲<br><br>
+            Everything that I did wrong — I really apologise for it and I want you to forgive me from the bottom of your heart. I promise to stay with you for all my life. I promise to keep loving you for all my life. And I also promise that no one will ever replace you. You are my one and only. ❤️<br><br>
+            I really love you and I hope you will too. I will try my best to become the best for you.<br><br>
+            Wesa jesa apko pasand hun — mein ne aaj tak jo kia uske liye mein sorry hun aur sharminda bhi hun. 🙏<br><br>
+            In the end — happiest birthday to the prettiest girl in the universe. 🎂🎉<br><br>
+            May you live a healthy, prosperous and happy life with me forever. 💍
         </div>
     </div>
 </div>
@@ -179,6 +199,10 @@ function playSong(){
 }
 function showPhoto(){
     document.getElementById("photoSection").style.display="block";
+    confetti();
+}
+function showSpecialMessage(){
+    document.getElementById("specialMessageSection").style.display="block";
     confetti();
 }
 </script>
