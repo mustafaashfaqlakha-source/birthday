@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+}
+.container {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+img {
+    width: 250px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+.message {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Password Screen */
+#passwordScreen {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+#passwordScreen h2 {
+    margin-bottom: 20px;
+}
+#passwordInput {
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+    width: 80%;
+    outline: none;
+    color: #333;
+}
+#passwordBtn {
+    background: white;
+    color: #ff758c;
+    font-weight: bold;
+    display: block;
+    margin: 15px auto 0;
+}
+#errorMsg {
+    display: none;
+    margin-top: 12px;
+    font-size: 15px;
+    color: #ffe0e0;
+}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+    <h2>🔒 Enter Password ❤️</h2>
+    <input type="password" id="passwordInput" placeholder="Type password here" onkeydown="if(event.key==='Enter') checkPassword()">
+    <button id="passwordBtn" onclick="checkPassword()">Unlock Surprise 🎁</button>
+    <p id="errorMsg">❌ Wrong password, try again!</p>
+</div>
+
+<!-- MAIN CONTENT (hidden until correct password) -->
+<div class="container hidden" id="mainContent">
+    <h2 id="title">Answer these questions first 💌</h2>
+    <!-- QUESTION 1 -->
+    <div id="q1">
+        <p>How many years are you?</p>
+        <button onclick="tapAge()">Tap Here</button>
+        <p id="ageCount">0 / 21 taps</p>
+    </div>
+    <!-- QUESTION 2 -->
+    <div id="q2" class="hidden">
+        <p>How much do you love me?</p>
+        <input id="loveInput" placeholder="Type answer">
+        <br>
+        <button onclick="checkLove()">Submit</button>
+    </div>
+    <!-- QUESTION 3 -->
+    <div id="q3" class="hidden">
+        <p>How many birthdays have we seen together?</p>
+        <button onclick="tapBirthday()">Tap Here</button>
+        <p id="birthdayCount">0 / 3 taps</p>
+    </div>
+    <!-- FINAL SCREEN -->
+    <div id="final" class="hidden">
+        <h2>Happy Birthday My Love ❤️</h2>
+        <button onclick="playSong()">Play Special Song 🎵</button>
+        <button onclick="showPhoto()">See Our Picture 📸</button>
+        <div id="photoSection" class="hidden">
+            <img src="wish pic.PNG">
+            <div class="message">
+                Happy Birthday my love ❤️<br>
+                You are the most beautiful part of my life. I love you like this universe — never ending, always expanding.
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio id="song" src="happy-birthday-song-128-ytshorts.savetube.me.mp3"></audio>
+
+<script>
+function checkPassword() {
+    let input = document.getElementById("passwordInput").value;
+    if (input === "muyum151825") {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+    } else {
+        document.getElementById("errorMsg").style.display = "block";
+        document.getElementById("passwordInput").value = "";
+    }
+}
+
+let ageTaps = 0;
+let birthdayTaps = 0;
+
+function tapAge(){
+    ageTaps++;
+    document.getElementById("ageCount").innerText = ageTaps + " / 21 taps";
+    if(ageTaps === 21){
+        confetti();
+        document.getElementById("q1").style.display="none";
+        document.getElementById("q2").style.display="block";
+    }
+}
+function checkLove(){
+    let answer = document.getElementById("loveInput").value.toLowerCase().trim();
+    if(answer === "infinity"){
+        confetti();
+        document.getElementById("q2").style.display="none";
+        document.getElementById("q3").style.display="block";
+    }else{
+        alert("Try again ❤️");
+    }
+}
+function tapBirthday(){
+    birthdayTaps++;
+    document.getElementById("birthdayCount").innerText = birthdayTaps + " / 3 taps";
+    if(birthdayTaps === 3){
+        confetti();
+        document.getElementById("q3").style.display="none";
+        document.getElementById("final").style.display="block";
+    }
+}
+function playSong(){
+    document.getElementById("song").play();
+    confetti();
+}
+function showPhoto(){
+    document.getElementById("photoSection").style.display="block";
+    confetti();
+}
+</script>
+</body>
+</html>
