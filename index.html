@@ -87,6 +87,11 @@ img {
     line-height: 1.8;
     text-align: left;
 }
+#videoSection video {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
 </style>
 </head>
 <body>
@@ -124,9 +129,16 @@ img {
     <!-- FINAL SCREEN -->
     <div id="final" class="hidden">
         <h2>Happy Birthday My Love ❤️</h2>
-        <button onclick="playSong()">Play Special Song 🎵</button>
+        <button onclick="showVideo()">A Message From Me 🎥</button>
         <button onclick="showPhoto()">See Our Picture 📸</button>
         <button onclick="showSpecialMessage()">Special Message for Begum 💌</button>
+
+        <div id="videoSection" class="hidden">
+            <video controls playsinline>
+                <source src="song for her.mp4" type="video/mp4">
+            </video>
+        </div>
+
         <div id="photoSection" class="hidden">
             <img src="wish pic.PNG">
             <div class="message">
@@ -134,6 +146,7 @@ img {
                 You are the most beautiful part of my life. I love you like this universe — never ending, always expanding.
             </div>
         </div>
+
         <div id="specialMessageSection" class="hidden">
             Happy Birthday to the most amazing, wonderful and prettiest girl to ever exist in this universe. 🌸<br><br>
             I want you to know that I really love you a lot and I cannot live without you. Whenever I think about you, I remember the day when I first saw you — you were looking stunning and really pretty, and I still find you really beautiful. 😍<br><br>
@@ -147,8 +160,6 @@ img {
         </div>
     </div>
 </div>
-
-<audio id="song" src="happy-birthday-song-128-ytshorts.savetube.me.mp3"></audio>
 
 <script>
 function checkPassword() {
@@ -193,8 +204,8 @@ function tapBirthday(){
         document.getElementById("final").style.display="block";
     }
 }
-function playSong(){
-    document.getElementById("song").play();
+function showVideo(){
+    document.getElementById("videoSection").style.display="block";
     confetti();
 }
 function showPhoto(){
